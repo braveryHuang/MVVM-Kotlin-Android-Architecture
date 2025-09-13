@@ -84,7 +84,7 @@ constructor(private val dataRepositoryRepository: DataRepositorySource) : BaseVi
         recipesLiveDataPrivate.value?.data?.recipesList?.let {
             if (it.isNotEmpty()) {
                 for (recipe in it) {
-                    if (recipe.name.toLowerCase(ROOT).contains(recipeName.toLowerCase(ROOT))) {
+                    if (recipe.name.lowercase(ROOT).contains(recipeName.lowercase(ROOT))) {
                         recipeSearchFoundPrivate.value = recipe
                         return
                     }
