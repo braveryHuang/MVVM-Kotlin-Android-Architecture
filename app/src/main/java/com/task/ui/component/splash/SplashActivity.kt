@@ -3,18 +3,18 @@ package com.task.ui.component.splash
 import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
-import androidx.activity.viewModels
+import android.os.Looper
+import com.task.SPLASH_DELAY
 import com.task.databinding.SplashLayoutBinding
 import com.task.ui.base.BaseActivity
 import com.task.ui.component.login.LoginActivity
-import com.task.SPLASH_DELAY
 import dagger.hilt.android.AndroidEntryPoint
 
 /**
  * Created by AhmedEltaher
  */
 @AndroidEntryPoint
-class SplashActivity : BaseActivity(){
+class SplashActivity : BaseActivity() {
 
     private lateinit var binding: SplashLayoutBinding
 
@@ -33,7 +33,7 @@ class SplashActivity : BaseActivity(){
     }
 
     private fun navigateToMainScreen() {
-        Handler().postDelayed({
+        Handler(Looper.getMainLooper()).postDelayed({
             val nextScreenIntent = Intent(this, LoginActivity::class.java)
             startActivity(nextScreenIntent)
             finish()
