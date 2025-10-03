@@ -49,7 +49,7 @@ ext {
     retrofitVersion = '2.9.0'
     moshiVersion = '1.15.2'
     okhttpInterceptorVersion = '4.9.0'
-    mockVersion = '1.10.5'
+    mockVersion = '1.13.8'
     annotationVersion ='1.9.1'
     glid = '4.11.0'
     picassoVersion = '2.71828'
