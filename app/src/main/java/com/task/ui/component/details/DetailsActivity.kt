@@ -114,6 +114,7 @@ class DetailsActivity : BaseActivity() {
             is Resource.Loading -> {
                 binding.pbLoading.toVisible()
             }
+
             is Resource.Success -> {
                 isFavourite.data?.let {
                     handleIsFavouriteUI(it)
@@ -121,6 +122,7 @@ class DetailsActivity : BaseActivity() {
                     binding.pbLoading.toGone()
                 }
             }
+
             is Resource.DataError -> {
                 menu?.findItem(R.id.add_to_favorite)?.isCheckable = true
                 binding.pbLoading.toGone()
@@ -131,11 +133,11 @@ class DetailsActivity : BaseActivity() {
     private fun handleIsFavouriteUI(isFavourite: Boolean) {
         menu?.let {
             it.findItem(R.id.add_to_favorite)?.icon =
-                    if (isFavourite) {
-                        ContextCompat.getDrawable(this, R.drawable.ic_star_24)
-                    } else {
-                        ContextCompat.getDrawable(this, R.drawable.ic_outline_star_border_24)
-                    }
+                if (isFavourite) {
+                    ContextCompat.getDrawable(this, R.drawable.ic_star_24)
+                } else {
+                    ContextCompat.getDrawable(this, R.drawable.ic_outline_star_border_24)
+                }
         }
     }
 
@@ -144,7 +146,7 @@ class DetailsActivity : BaseActivity() {
         binding.tvHeadline.text = recipesItem.headline
         binding.tvDescription.text = recipesItem.description
         Picasso.get().load(recipesItem.image).placeholder(R.drawable.ic_healthy_food_small)
-                .into(binding.ivRecipeImage)
+            .into(binding.ivRecipeImage)
 
     }
 }

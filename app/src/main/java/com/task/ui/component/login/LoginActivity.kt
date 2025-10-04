@@ -10,7 +10,12 @@ import com.task.data.dto.login.LoginResponse
 import com.task.databinding.LoginActivityBinding
 import com.task.ui.base.BaseActivity
 import com.task.ui.component.recipes.RecipesListActivity
-import com.task.utils.*
+import com.task.utils.SingleEvent
+import com.task.utils.observe
+import com.task.utils.setupSnackbar
+import com.task.utils.showToast
+import com.task.utils.toGone
+import com.task.utils.toVisible
 import dagger.hilt.android.AndroidEntryPoint
 
 /**
@@ -54,6 +59,7 @@ class LoginActivity : BaseActivity() {
                 binding.loaderView.toGone()
                 navigateToMainScreen()
             }
+
             is Resource.DataError -> {
                 binding.loaderView.toGone()
                 status.errorCode?.let { loginViewModel.showToastMessage(it) }

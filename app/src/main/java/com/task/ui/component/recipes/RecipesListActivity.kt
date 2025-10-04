@@ -24,7 +24,13 @@ import com.task.databinding.HomeActivityBinding
 import com.task.ui.base.BaseActivity
 import com.task.ui.component.details.DetailsActivity
 import com.task.ui.component.recipes.adapter.RecipesAdapter
-import com.task.utils.*
+import com.task.utils.SingleEvent
+import com.task.utils.observe
+import com.task.utils.observeEvent
+import com.task.utils.setupSnackbar
+import com.task.utils.showToast
+import com.task.utils.toGone
+import com.task.utils.toVisible
 import dagger.hilt.android.AndroidEntryPoint
 
 /**

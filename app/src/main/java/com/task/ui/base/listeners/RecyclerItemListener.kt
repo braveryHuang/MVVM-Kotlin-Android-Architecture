@@ -7,5 +7,5 @@ import com.task.data.dto.recipes.RecipesItem
  */
 
 interface RecyclerItemListener {
-    fun onItemSelected(recipe : RecipesItem)
+    fun onItemSelected(recipe: RecipesItem)
 }

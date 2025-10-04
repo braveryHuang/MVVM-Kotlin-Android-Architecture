@@ -12,7 +12,6 @@ import com.task.ui.base.BaseViewModel
 import com.task.utils.SingleEvent
 import com.task.utils.wrapEspressoIdlingResource
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 import java.util.Locale.ROOT
 import javax.inject.Inject

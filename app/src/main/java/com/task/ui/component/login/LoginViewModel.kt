@@ -16,7 +16,6 @@ import com.task.utils.RegexUtils.isValidEmail
 import com.task.utils.SingleEvent
 import com.task.utils.wrapEspressoIdlingResource
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -24,7 +23,8 @@ import javax.inject.Inject
  * Created by AhmedEltaher
  */
 @HiltViewModel
-class LoginViewModel @Inject constructor(private val dataRepository: DataRepository) : BaseViewModel() {
+class LoginViewModel @Inject constructor(private val dataRepository: DataRepository) :
+    BaseViewModel() {
 
     @VisibleForTesting(otherwise = VisibleForTesting.PRIVATE)
     private val loginLiveDataPrivate = MutableLiveData<Resource<LoginResponse>>()
@@ -54,9 +54,10 @@ class LoginViewModel @Inject constructor(private val dataRepository: DataReposit
             viewModelScope.launch {
                 loginLiveDataPrivate.value = Resource.Loading()
                 wrapEspressoIdlingResource {
-                    dataRepository.doLogin(loginRequest = LoginRequest(userName, passWord)).collect {
-                        loginLiveDataPrivate.value = it
-                    }
+                    dataRepository.doLogin(loginRequest = LoginRequest(userName, passWord))
+                        .collect {
+                            loginLiveDataPrivate.value = it
+                        }
                 }
             }
         }

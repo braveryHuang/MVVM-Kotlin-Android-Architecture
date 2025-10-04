@@ -10,7 +10,6 @@ import com.task.data.dto.recipes.RecipesItem
 import com.task.ui.base.BaseViewModel
 import com.task.utils.wrapEspressoIdlingResource
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -18,7 +17,8 @@ import javax.inject.Inject
  * Created by AhmedEltaher
  */
 @HiltViewModel
-open class DetailsViewModel @Inject constructor(private val dataRepository: DataRepositorySource) : BaseViewModel() {
+open class DetailsViewModel @Inject constructor(private val dataRepository: DataRepositorySource) :
+    BaseViewModel() {
 
     @VisibleForTesting(otherwise = VisibleForTesting.PRIVATE)
     val recipePrivate = MutableLiveData<RecipesItem>()
@@ -53,11 +53,15 @@ open class DetailsViewModel @Inject constructor(private val dataRepository: Data
                     dataRepository.removeFromFavourite(it).collect { isRemoved ->
                         when (isRemoved) {
                             is Resource.Success -> {
-                                isRemoved.data?.let { isFavouritePrivate.value = Resource.Success(!isRemoved.data) }
+                                isRemoved.data?.let {
+                                    isFavouritePrivate.value = Resource.Success(!isRemoved.data)
+                                }
                             }
+
                             is Resource.DataError -> {
                                 isFavouritePrivate.value = isRemoved
                             }
+
                             is Resource.Loading -> {
                                 isFavouritePrivate.value = isRemoved
                             }
